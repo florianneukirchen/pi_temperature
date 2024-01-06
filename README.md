@@ -11,9 +11,21 @@ data on an Android phone? What about connecting with Bluetooth Low Energy? This 
 
 I am using [CPUTemp](https://github.com/Douglas6/cputemp) by Douglas Otwell for the raspberry side.
 This is an "Python GATT server example for the Raspberry Pi", i.e. a relative simple example of how to get
-BLE working on the Rasperry Pi and to stream the CPU temperature.
+BLE working on the Rasperry Pi and to stream the CPU temperature. It would be easy to change the python code to be used with other sensors.
 
 Clone this repository on your Pi. Change into the directory and start the GATT server with `python3 cputemp.py`.
+
+The only thing I changed in the code ist the time step at which the temperature value is updated: 
+for testing purpuses I changed it from 5 s to 40 ms by changing:
+
+```python
+NOTIFY_TIMEOUT = 5000
+```
+
+to: 
+```python
+NOTIFY_TIMEOUT = 40
+```
 
 ## Flutter App
 
@@ -22,6 +34,13 @@ specified in `cputemp.py`.
 
 The app uses [provider](https://docs.flutter.dev/data-and-backend/state-mgmt/simple) to manage app state, [fl_chart](https://pub.dev/packages/fl_chart) for plotting
 and [flutter_reactive_ble](https://pub.dev/packages/flutter_reactive_ble) for the bluetooth connection.
+
+### Start to develop
+The bluetooth connection details are set in `main.dart`:
+- name of the bluetooth device
+- UUID of Service and Characteristic
+
+The sample rate in milliseconds (e.g. 40 ms) is set in `live_line_chart.dart`.
 
 ## Useful Resources
 - [Get Started with Bluetooth Low Energy using Flutter & Arduino](https://medium.com/@danielwolf.dev/get-started-with-bluetooth-low-energy-using-flutter-arduino-bdf5d790edc)

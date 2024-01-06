@@ -6,6 +6,10 @@ import 'dart:convert';
 import 'package:provider/provider.dart';
 import 'live_line_chart.dart';
 
+const BLE_NAME = 'Thermometer';
+const SERVICE_UUID = '00000001-710e-4a5b-8d75-3e5b444bc3cf';
+const CHARACTERIST_UUID = '00000002-710e-4a5b-8d75-3e5b444bc3cf';
+
 void main() {
   runApp(const MyApp());
 }
@@ -82,7 +86,7 @@ class MyAppState extends ChangeNotifier {
   }
 
   void _onScanUpdate(DiscoveredDevice d) {
-    if (d.name == 'Thermometer' && !_found) {
+    if (d.name == BLE_NAME && !_found) {
       _scanSub?.cancel(); // Stop Scan
       _found = true;
       _connectSub = _ble.connectToDevice(id: d.id).listen((update) {
@@ -97,7 +101,7 @@ class MyAppState extends ChangeNotifier {
   void _onConnected(String deviceId) {
     final characteristic = QualifiedCharacteristic(
         deviceId: deviceId,
-        serviceId: Uuid.parse('00000001-710e-4a5b-8d75-3e5b444bc3cf'),
+        serviceId: Uuid.parse(SERVICE_UUID),
         characteristicId: Uuid.parse('00000002-710e-4a5b-8d75-3e5b444bc3cf'));
 
     _notifySub = _ble.subscribeToCharacteristic(characteristic).listen((bytes) {
