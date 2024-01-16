@@ -41,8 +41,7 @@ The bluetooth connection details are set in `main.dart`:
 - name of the bluetooth device
 - UUID of Service and Characteristic
 
-If you adapt the code for another sensor, you'll want to use another name and other UUIDs. There are 
-<<<<<<< HEAD
+If you adapt the code for another sensor, you'll want to use another name and other UUIDs. There are
 many websites to generate UUIDs for free, just make sure you do not conflict with reserved UUIDs, see
 [reference](https://novelbits.io/uuid-for-custom-services-and-characteristics/).
 
