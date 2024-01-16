@@ -42,14 +42,8 @@ The bluetooth connection details are set in `main.dart`:
 - UUID of Service and Characteristic
 
 If you adapt the code for another sensor, you'll want to use another name and other UUIDs. There are 
-<<<<<<< HEAD
-many websites to generate UUIDs for free, just make sure you do not conflict with reserved UUIDs
-([reference](https://novelbits.io/uuid-for-custom-services-and-characteristics/)).
-=======
-many websites to generate UUIDs for free, just make sure you do not conflict with reserved UUIDs 
+many websites to generate UUIDs for free, just make sure you do not conflict with reserved UUIDs, see
 [reference](https://novelbits.io/uuid-for-custom-services-and-characteristics/).
->>>>>>> cbb7b68533907a86d6da76a4e6bfbc6e50c6349e
-
 
 The sample rate in milliseconds (e.g. 40 ms) is set in `live_line_chart.dart`.
 
