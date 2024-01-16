@@ -1,6 +1,6 @@
 # PiTemperature
 
-Flutter app to plot Raspberry Pi CPU temperature on Android via Bluetooth Low Energy.
+Flutter app to plot Raspberry Pi CPU temperature on Android via [Bluetooth Low Energy](https://learn.adafruit.com/introduction-to-bluetooth-low-energy).
 
 You have sensors connected to a Raspberry Pi, no internet connection while measuring, but still want to plot live
 data on an Android phone? What about connecting with Bluetooth Low Energy? This project helps you to get started.
@@ -15,7 +15,8 @@ BLE working on the Rasperry Pi and to stream the CPU temperature. It would be ea
 
 Clone this repository on your Pi. Change into the directory and start the GATT server with `python3 cputemp.py`.
 
-The only thing I changed in the code ist the time step at which the temperature value is updated: 
+For the CPU temperature example, the only thing I changed in the code is the time step at which the 
+temperature value is updated: 
 for testing purpuses I changed it from 5 s to 40 ms by changing:
 
 ```python
@@ -39,6 +40,11 @@ and [flutter_reactive_ble](https://pub.dev/packages/flutter_reactive_ble) for th
 The bluetooth connection details are set in `main.dart`:
 - name of the bluetooth device
 - UUID of Service and Characteristic
+
+If you adapt the code for another sensor, you'll want to use another name and other UUIDs. There are 
+many websites to generate UUIDs for free, just make sure you do not conflict with reserved UUIDs
+([reference](https://novelbits.io/uuid-for-custom-services-and-characteristics/)).
+
 
 The sample rate in milliseconds (e.g. 40 ms) is set in `live_line_chart.dart`.
 
