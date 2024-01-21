@@ -1,13 +1,13 @@
 # PiTemperature
-<img style="float: right; margin: 5px" src="Screenshot_T.jpg">
-
-Flutter app to plot Raspberry Pi CPU temperature on Android via 
+[Flutter](https://flutter.dev/) app to plot Raspberry Pi CPU temperature on Android via
 [Bluetooth Low Energy](https://learn.adafruit.com/introduction-to-bluetooth-low-energy).
 
 You have sensors connected to a Raspberry Pi, no internet connection while measuring, but still want to plot live
 data on an Android phone? What about connecting with Bluetooth Low Energy? This project helps you to get started.
 
 © 2024 Florian Neukirchen, under [MIT License](https://github.com/florianneukirchen/pi_temperature/blob/main/LICENSE)
+![Screenshot](Screenshot_T.jpg)
+
 
 ## Set up the Raspberry Pi
 
@@ -15,7 +15,7 @@ I am using [CPUTemp](https://github.com/Douglas6/cputemp) by Douglas Otwell for 
 This is an "Python GATT server example for the Raspberry Pi", i.e. a relative simple example of how to get
 BLE working on the Rasperry Pi and to stream the CPU temperature. It would be easy to change the python code to be used with other sensors.
 
-Clone this repository on your Pi. Change into the directory and start the GATT server with `python3 cputemp.py`.
+Clone the CPUTemp repository on your Pi. Change into the directory and start the GATT server with `python3 cputemp.py`.
 
 For the CPU temperature example, the only thing I changed in the code is the time step at which the 
 temperature value is updated: 
@@ -31,12 +31,14 @@ NOTIFY_TIMEOUT = 40
 ```
 
 ## Flutter App
-
-The current version searches for Bluetooth device "Temperature" and subscribes using the UUIDs
-specified in `cputemp.py`.
-
+I assume you have some experience in developing Android apps with Flutter. 
 The app uses [provider](https://docs.flutter.dev/data-and-backend/state-mgmt/simple) to manage app state, [fl_chart](https://pub.dev/packages/fl_chart) for plotting
 and [flutter_reactive_ble](https://pub.dev/packages/flutter_reactive_ble) for the bluetooth connection.
+
+The current version searches for Bluetooth device "Temperature" and subscribes using the UUIDs
+specified in `cputemp.py` on the Raspberry side.
+
+
 
 ### Start to develop
 The bluetooth connection details are set in `main.dart`:
