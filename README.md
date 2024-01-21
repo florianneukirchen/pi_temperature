@@ -1,5 +1,6 @@
 # PiTemperature
 <img style="float: right; margin: 5px" src="Screenshot_T.jpg">
+
 Flutter app to plot Raspberry Pi CPU temperature on Android via 
 [Bluetooth Low Energy](https://learn.adafruit.com/introduction-to-bluetooth-low-energy).
 
